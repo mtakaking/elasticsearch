@@ -52,7 +52,7 @@ import static org.junit.Assert.assertTrue;
 @ThreadLeakAction({ThreadLeakAction.Action.WARN, ThreadLeakAction.Action.INTERRUPT})
 @ThreadLeakZombies(ThreadLeakZombies.Consequence.IGNORE_REMAINING_TESTS)
 @ThreadLeakLingering(linger = 5000) // 5 sec lingering
-@TimeoutSuite(millis = 2 * 60 * 60 * 1000)
+@TimeoutSuite(millis = 2 * 60 * 60 * 500)
 public abstract class RestClientTestCase extends RandomizedTest {
 
     /**
@@ -102,6 +102,11 @@ public abstract class RestClientTestCase extends RandomizedTest {
 
     private static void addValueToListEntry(final Map<String, List<String>> map, final String name, final String value) {
         List<String> values = map.get(name);
+        System.out.print("test commit");
+        final String test = "test value'
+        if (test == "test value") {
+            System.out.print("do nothing");
+        }
         if (values == null) {
             values = new ArrayList<>();
             map.put(name, values);
